@@ -9,18 +9,18 @@
   --gold-light: #E8C27A;
   --gold-pale: #F5E4B8;
   --muted: #8a7060;
-  --white: #fff;
+  --white: #FAF4EC;
 
   /* Dark scene (Three.js bg colors) */
   --scene-bg: #050508;
 
   /* Glassmorphism surfaces */
-  --glass-heavy:   rgba(10, 8, 12, 0.45);
-  --glass-mid:     rgba(15, 12, 18, 0.25);
-  --glass-light:   rgba(250, 244, 236, 0.07);
-  --glass-cream:   rgba(250, 244, 236, 0.10);
-  --glass-gold:    rgba(201, 151, 58, 0.10);
-  --glass-border:  rgba(201, 151, 58, 0.18);
+  --glass-heavy: rgba(10, 8, 12, 0.45);
+  --glass-mid: rgba(15, 12, 18, 0.25);
+  --glass-light: rgba(250, 244, 236, 0.07);
+  --glass-cream: rgba(250, 244, 236, 0.10);
+  --glass-gold: rgba(201, 151, 58, 0.10);
+  --glass-border: rgba(201, 151, 58, 0.18);
   --glass-border-light: rgba(255, 255, 255, 0.07);
 
   /* Blur levels */
@@ -57,17 +57,18 @@
 /* ── LIGHT MODE OVERRIDES ── */
 body.light-mode {
   --scene-bg: #fdfbf7;
-  --cream: #2a1b12; /* Text color becomes dark */
+  --cream: #2a1b12;
+  /* Text color becomes dark */
   --cream-dark: #3f2a1d;
   --gold-pale: #a67b2d;
-  
+
   /* Glassmorphism surfaces for light mode */
-  --glass-heavy:   rgba(255, 255, 255, 0.75);
-  --glass-mid:     rgba(255, 255, 255, 0.60);
-  --glass-light:   rgba(255, 255, 255, 0.40);
-  --glass-cream:   rgba(200, 150, 100, 0.10);
-  --glass-gold:    rgba(201, 151, 58, 0.15);
-  --glass-border:  rgba(201, 151, 58, 0.35);
+  --glass-heavy: rgba(255, 255, 255, 0.75);
+  --glass-mid: rgba(255, 255, 255, 0.60);
+  --glass-light: rgba(255, 255, 255, 0.40);
+  --glass-cream: rgba(200, 150, 100, 0.10);
+  --glass-gold: rgba(201, 151, 58, 0.15);
+  --glass-border: rgba(201, 151, 58, 0.35);
   --glass-border-light: rgba(0, 0, 0, 0.08);
 }
 
@@ -94,7 +95,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Outfit', sans-serif;
 }
 
@@ -114,30 +120,51 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ── ANIMATIONS ── */
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes spin-rev {
-  to { transform: rotate(-360deg); }
+  to {
+    transform: rotate(-360deg);
+  }
 }
 
 @keyframes sline {
-  0% { left: -100%; }
-  100% { left: 100%; }
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 100%;
+  }
 }
 
 @keyframes icon-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 @keyframes rip {
-  to { transform: scale(4); opacity: 0; }
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
 }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-  body { cursor: auto; }
+  body {
+    cursor: auto;
+  }
 
   .quote-strip {
     padding: 60px 20px;
@@ -159,8 +186,10 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: flex-end; /* Stuck to the bottom */
-  padding: 180px 0 0; /* No bottom padding to glue with section below */
+  align-items: flex-end;
+  /* Stuck to the bottom */
+  padding: 180px 0 0;
+  /* No bottom padding to glue with section below */
   overflow: hidden;
 }
 
@@ -169,7 +198,7 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 800px;
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 20px 50px rgba(0,0,0,0.1));
+  filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.1));
 }
 
 @media (max-width: 768px) {
