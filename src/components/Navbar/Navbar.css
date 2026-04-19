@@ -1,0 +1,156 @@
+/* ── NAVBAR WRAPPER ── */
+.navbar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 200;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  transition: padding 0.4s var(--ease-out);
+  pointer-events: none; /* Let clicks pass through outside the pill */
+}
+
+/* ── NAVBAR PILL ── */
+#navbar {
+  pointer-events: auto; /* Re-enable clicks inside the pill */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1000px;
+  background: var(--glass-heavy);
+  backdrop-filter: var(--blur-lg);
+  -webkit-backdrop-filter: var(--blur-lg);
+  border: 1px solid var(--glass-border);
+  border-radius: 100px; /* Pill shape */
+  padding: 18px 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s var(--ease-out);
+}
+
+.navbar-wrapper.scrolled {
+  padding: 12px 24px;
+}
+
+.navbar-wrapper.scrolled #navbar {
+  padding: 12px 32px;
+  max-width: 900px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  background: var(--glass-heavy);
+  border-color: rgba(201, 151, 58, 0.25);
+}
+
+/* ── LEFT & RIGHT ZONES ── */
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  flex: 1;
+}
+
+.nav-left {
+  gap: 28px;
+  justify-content: flex-start;
+}
+
+.nav-right {
+  gap: 24px;
+  justify-content: flex-end;
+}
+
+/* ── CENTER LOGO ── */
+.nav-center {
+  flex: 0 1 auto;
+  text-align: center;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.logo-img {
+  height: 48px; /* High-end feel, not too big */
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  transition: transform 0.3s var(--ease-out);
+}
+
+.nav-logo:hover .logo-img {
+  transform: scale(1.05);
+}
+
+/* Scrolled state adjustment */
+.navbar-wrapper.scrolled .logo-img {
+  height: 36px;
+}
+
+/* ── LINKS ── */
+.nav-left a {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  color: var(--cream);
+  opacity: 0.65;
+  text-decoration: none;
+  transition: color 0.3s, opacity 0.3s;
+  font-weight: 500;
+}
+
+.nav-left a:hover {
+  color: var(--gold-dark);
+  opacity: 1;
+}
+
+/* ── ICONS & BUTTONS ── */
+.icon-btn, .theme-toggle {
+  background: none;
+  border: none;
+  color: var(--cream);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  padding: 0;
+}
+
+.theme-toggle {
+  font-size: 18px;
+}
+
+.icon-btn:hover, .theme-toggle:hover {
+  color: var(--gold-light);
+  transform: scale(1.1);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .navbar-wrapper {
+    padding: 16px;
+  }
+  
+  #navbar {
+    padding: 16px 20px;
+    border-radius: 20px;
+  }
+
+  .nav-left {
+    display: none; /* Hide text links on mobile, should add hamburger later */
+  }
+
+  .nav-center {
+    flex: 1;
+    text-align: left;
+  }
+
+  .nav-logo {
+    font-size: 15px;
+    letter-spacing: .08em;
+  }
+}

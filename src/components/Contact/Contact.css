@@ -1,0 +1,168 @@
+.contact-section {
+  padding: 100px 24px;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-container {
+  max-width: 1000px;
+  width: 100%;
+}
+
+.contact-glass {
+  position: relative;
+  background: var(--glass-heavy);
+  backdrop-filter: var(--blur-lg);
+  -webkit-backdrop-filter: var(--blur-lg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: 80px 60px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.contact-content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  max-width: 500px;
+}
+
+.contact-title {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 24px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.contact-description {
+  font-size: 18px;
+  color: var(--cream);
+  opacity: 0.7;
+  margin-bottom: 48px;
+  line-height: 1.6;
+}
+
+/* ── WHATSAPP CTA ── */
+.whatsapp-cta {
+  display: inline-flex;
+  align-items: center;
+  background: var(--gold);
+  color: var(--brown-deep);
+  padding: 18px 36px;
+  border-radius: 100px;
+  text-decoration: none;
+  gap: 20px;
+  transition: all 0.4s var(--ease-out);
+  box-shadow: 0 10px 30px rgba(201, 151, 58, 0.2);
+}
+
+.whatsapp-cta:hover {
+  transform: translateY(-5px);
+  background: var(--gold-light);
+  box-shadow: 0 15px 40px rgba(201, 151, 58, 0.3);
+}
+
+.cta-icon {
+  font-size: 24px;
+}
+
+.cta-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.cta-action {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.cta-platform {
+  font-size: 12px;
+  opacity: 0.8;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.cta-arrow {
+  font-size: 20px;
+  margin-left: 10px;
+  transition: transform 0.3s;
+}
+
+.whatsapp-cta:hover .cta-arrow {
+  transform: translateX(5px);
+}
+
+/* ── DECORATIVE ELEMENTS ── */
+.contact-decor {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  pointer-events: none;
+}
+
+.decor-circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+}
+
+.circle-1 {
+  width: 300px;
+  height: 300px;
+  background: rgba(201, 151, 58, 0.15);
+  top: -100px;
+  right: -100px;
+}
+
+.circle-2 {
+  width: 250px;
+  height: 250px;
+  background: rgba(250, 244, 236, 0.05);
+  bottom: -50px;
+  right: 50px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .contact-glass {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 32px;
+  }
+
+  .contact-content {
+    max-width: 100%;
+  }
+
+  .whatsapp-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .contact-decor {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 60px 16px;
+  }
+  
+  .contact-title {
+    font-size: 32px;
+  }
+}
