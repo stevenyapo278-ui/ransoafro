@@ -174,9 +174,9 @@
   padding: 18px 22px;
   border: 1px solid var(--glass-border-light);
   border-radius: var(--radius-md);
-  background: rgba(15, 12, 18, 0.75); /* More solid for better readability */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: var(--glass-light);
+  backdrop-filter: var(--blur-sm);
+  -webkit-backdrop-filter: var(--blur-sm);
   cursor: none;
   transition: all .3s var(--ease-out);
   color: var(--cream);
