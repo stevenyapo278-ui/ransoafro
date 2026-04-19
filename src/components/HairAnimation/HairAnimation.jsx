@@ -6,6 +6,7 @@ const HairAnimation = ({ theme }) => {
   const containerRef = useRef(null);
   const sceneRef = useRef(null);
   const rendererRef = useRef(null);
+  const groundRef = useRef(null);
 
   useEffect(() => {
     // Si la scène est instanciée et que le thème change, on modifie le background et le fog
@@ -13,6 +14,12 @@ const HairAnimation = ({ theme }) => {
       const bgColor = theme === 'light' ? 0xfdfbf7 : 0x050508;
       sceneRef.current.background.setHex(bgColor);
       sceneRef.current.fog.color.setHex(bgColor);
+      
+      // Cache le sol en mode clair car il crée un rectangle visible indésirable
+      if (groundRef.current) {
+        groundRef.current.visible = theme === 'dark';
+      }
+
       // Ajustement dynamique de l'exposition pour ne pas aveugler en mode clair
       if (rendererRef.current) {
         rendererRef.current.toneMappingExposure = theme === 'light' ? 1.0 : 1.6;
@@ -227,7 +234,9 @@ const HairAnimation = ({ theme }) => {
     const ground = new THREE.Mesh(planeGeo, planeMat);
     ground.rotation.x = -Math.PI / 2;
     ground.position.y = -2.8;
+    ground.visible = theme === 'dark'; // Visibilité initiale
     scene.add(ground);
+    groundRef.current = ground;
 
     // MOUSE PARALLAX & CAMERA OFFSET
     let mxRaw = 0, myRaw = 0;
