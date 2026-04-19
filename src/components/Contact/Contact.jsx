@@ -2,7 +2,7 @@ import React from 'react';
 import './Contact.css';
 
 const Contact = () => {
-  const whatsappNumber = "+2250574778787";
+  const whatsappNumber = "+2250151912206";
   const whatsappMessage = encodeURIComponent("Bonjour Rans'O Afro, j'aimerais en savoir plus sur vos produits.");
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 

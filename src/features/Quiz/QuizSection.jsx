@@ -211,7 +211,7 @@ const QuizSection = () => {
                 <button className="btn-restart" onClick={restartQuiz}>Recommencer le test</button>
                 <a
                   className="btn-whatsapp"
-                  href={`https://wa.me/+2250574778787?text=${encodeURIComponent(`🌿 *Mon résultat Rans'O Afro*\n\n*Porosité ${result.type}* ${result.icon}\n\n${result.state}\n\n✨ *Ma routine sur-mesure :*\n${result.sol.replace(/<[^>]+>/g, '')}\n\n👩🏽‍🦱 Faites votre diagnostic : ransafro.com`)}`}
+                  href={`https://wa.me/2250151912206?text=${encodeURIComponent(`🌿 *Mon résultat Rans'O Afro*\n\nMon type de porosité est : *${result.type}* ${result.icon}`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
