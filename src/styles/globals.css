@@ -60,16 +60,17 @@ body.light-mode {
   --cream: #2a1b12;
   /* Text color becomes dark */
   --cream-dark: #3f2a1d;
-  --gold-pale: #a67b2d;
+  --gold-pale: #8a6521; /* Darkened for accessibility */
+  --gold-dark: #7a501a;  /* Extra contrast for small text */
 
   /* Glassmorphism surfaces for light mode */
-  --glass-heavy: rgba(255, 255, 255, 0.75);
-  --glass-mid: rgba(255, 255, 255, 0.60);
-  --glass-light: rgba(255, 255, 255, 0.40);
-  --glass-cream: rgba(200, 150, 100, 0.10);
-  --glass-gold: rgba(201, 151, 58, 0.15);
-  --glass-border: rgba(201, 151, 58, 0.35);
-  --glass-border-light: rgba(0, 0, 0, 0.08);
+  --glass-heavy: rgba(255, 255, 255, 0.85); /* Slightly more opaque */
+  --glass-mid: rgba(255, 255, 255, 0.70);
+  --glass-light: rgba(255, 255, 255, 0.50);
+  --glass-cream: rgba(160, 110, 70, 0.12);
+  --glass-gold: rgba(166, 123, 45, 0.15);
+  --glass-border: rgba(166, 123, 45, 0.40); /* More defined border */
+  --glass-border-light: rgba(0, 0, 0, 0.10);
 }
 
 /* ── RESET ── */

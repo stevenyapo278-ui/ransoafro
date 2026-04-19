@@ -43,7 +43,7 @@ export const quizQuestions = [
 
 export const resultsData = {
   A: {
-    icon: '💧',
+    icon: 'water',
     title: 'Porosité <em>Faible</em>',
     pct: 18,
     type: 'Faible',
@@ -51,7 +51,7 @@ export const resultsData = {
     sol: 'Utilisez la <strong>chaleur douce</strong> lors de vos soins (bonnet chauffant) pour entrouvrir les cuticules. Optez pour des <strong>laits capillaires légers</strong> et des <strong>huiles fines</strong> comme le jojoba ou les pépins de raisin. Évitez les produits lourds qui s\'accumulent sans pénétrer.'
   },
   B: {
-    icon: '🌿',
+    icon: 'leaf',
     title: 'Porosité <em>Moyenne</em>',
     pct: 52,
     type: 'Moyenne',
@@ -59,7 +59,7 @@ export const resultsData = {
     sol: 'Continuez votre routine actuelle en <strong>alternant hydratation et nutrition légère</strong>. Maintenez cet équilibre précieux avec des soins réguliers à base d\'aloe vera, de beurre de karité léger et d\'huiles semi-légères. Votre couronne est saine — chérissez-la.'
   },
   C: {
-    icon: '🔥',
+    icon: 'heat',
     title: 'Porosité <em>Haute</em>',
     pct: 88,
     type: 'Haute',

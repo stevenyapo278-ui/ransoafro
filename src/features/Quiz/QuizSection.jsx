@@ -129,6 +129,22 @@ const QuizSection = () => {
     return resultsData[dom];
   };
 
+  const IconRenderer = ({ name }) => {
+    const props = { width: 32, height: 32, fill: "none", stroke: "currentColor", strokeWidth: 1.5, strokeLinecap: "round", strokeLinejoin: "round" };
+    switch (name) {
+      case 'water': return (
+        <svg {...props}><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" /></svg>
+      );
+      case 'leaf': return (
+        <svg {...props}><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.5-.8 9.2A7 7 0 0 1 11 20z" /><path d="M21 21L11 20" /></svg>
+      );
+      case 'heat': return (
+        <svg {...props}><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 3.5 1 5.5 1.5 0 3 1.5 3 3.5a2.5 2.5 0 0 1-5 0" /><path d="M12 22a7 7 0 1 1 0-14 7 7 0 0 1 0 14z" /></svg>
+      );
+      default: return null;
+    }
+  };
+
   const result = isFinished ? getResult() : null;
 
   return (
@@ -190,7 +206,9 @@ const QuizSection = () => {
         {isFinished && result && (
           <div id="quiz-results" className="active">
             <div className="result-card">
-              <div className="result-icon-wrap">{result.icon}</div>
+              <div className="result-icon-wrap">
+                <IconRenderer name={result.icon} />
+              </div>
               <span className="result-type">Votre profil — Porosité {result.type}</span>
               <h3 className="result-title" dangerouslySetInnerHTML={{ __html: result.title }}></h3>
               <div className="porosity-visual">
@@ -211,7 +229,7 @@ const QuizSection = () => {
                 <button className="btn-restart" onClick={restartQuiz}>Recommencer le test</button>
                 <a
                   className="btn-whatsapp"
-                  href={`https://wa.me/2250151912206?text=${encodeURIComponent(`🌿 *Mon résultat Rans'O Afro*\n\nMon type de porosité est : *${result.type}* ${result.icon}`)}`}
+                  href={`https://wa.me/2250151912206?text=${encodeURIComponent(`🌿 *Mon résultat Rans'O Afro*\n\nMon type de porosité est : *${result.type}* ${result.icon === 'water' ? '💧' : result.icon === 'leaf' ? '🌿' : '🔥'}`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
