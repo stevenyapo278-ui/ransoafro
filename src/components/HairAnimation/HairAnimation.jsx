@@ -149,24 +149,24 @@ const HairAnimation = ({ theme }) => {
     // GSAP Scroll Animation
     gsap.to(camera.position, {
       scrollTrigger: {
-        trigger: container,
+        trigger: 'body',
         start: "top top",
-        end: "bottom top",
-        scrub: 1,
+        end: "bottom bottom",
+        scrub: 1.5,
       },
-      z: 4,
-      y: 1.5,
-      ease: "none"
+      z: 3.5,
+      y: 0.8,
+      ease: "power2.inOut"
     });
 
     gsap.to(bottleGroup.rotation, {
       scrollTrigger: {
-        trigger: container,
+        trigger: 'body',
         start: "top top",
-        end: "bottom top",
-        scrub: 1,
+        end: "bottom bottom",
+        scrub: 2,
       },
-      y: "+=3.14",
+      y: "+=6.28", // Full 360 turn
       ease: "none"
     });
 

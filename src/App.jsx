@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import Lenis from 'lenis';
 import HairAnimation from './components/HairAnimation/HairAnimation';
 import CustomCursor from './components/CustomCursor/CustomCursor';
+import DecorativeLayers from './components/DecorativeLayers/DecorativeLayers';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
+import StorySection from './components/StorySection/StorySection';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import QuizSection from './features/Quiz/QuizSection';
-import quizDeco from './assets/quiz-deco.png';
 import productVideo from './assets/product-video.webm';
+import 'lenis/dist/lenis.css';
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -19,10 +22,38 @@ function App() {
   useEffect(() => {
     if (theme === 'light') {
       document.body.classList.add('light-mode');
+      document.body.classList.remove('dark-mode');
     } else {
+      document.body.classList.add('dark-mode');
       document.body.classList.remove('light-mode');
     }
   }, [theme]);
+
+  // Smooth Scroll Initialization
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
 
   useEffect(() => {
     const observerOptions = {
@@ -34,8 +65,6 @@ function App() {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
-          // Optional: stop observing once revealed
-          // observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
@@ -48,6 +77,7 @@ function App() {
 
   return (
     <div className="app-container">
+      <DecorativeLayers />
       {/* Animation 3D en fond global */}
       <HairAnimation theme={theme} />
 
@@ -56,14 +86,7 @@ function App() {
 
       <main>
         <Hero />
-
-
-        <div className="quiz-deco-wrap reveal">
-          <video className="quiz-video-deco" autoPlay muted loop playsInline>
-            <source src={productVideo} type="video/webm" />
-          </video>
-        </div>
-
+        <StorySection />
         <QuizSection />
       </main>
 

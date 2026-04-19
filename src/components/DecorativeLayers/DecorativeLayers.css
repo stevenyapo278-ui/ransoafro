@@ -1,0 +1,57 @@
+.decorative-layers {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.deco-layer {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.08; /* Reduced for better text clarity */
+  transition: opacity 0.5s ease;
+}
+
+.light-mode .deco-layer {
+  opacity: 0.08;
+}
+
+.deco-circle-1 {
+  width: 40vw;
+  height: 40vw;
+  background: var(--color-primary, #d4900a);
+  top: -10%;
+  left: -5%;
+}
+
+.deco-circle-2 {
+  width: 30vw;
+  height: 30vw;
+  background: var(--color-accent, #c084fc);
+  bottom: 0%;
+  right: -10%;
+}
+
+.deco-blur-1 {
+  width: 50vw;
+  height: 50vw;
+  background: transparent; /* Removed white blur */
+  top: 20%;
+  right: 10%;
+  filter: blur(150px);
+  opacity: 0;
+}
+
+.deco-blur-2 {
+  width: 35vw;
+  height: 35vw;
+  background: var(--color-secondary, #4a1a00);
+  bottom: 20%;
+  left: 10%;
+  opacity: 0.1;
+}
