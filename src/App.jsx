@@ -13,13 +13,21 @@ import productVideo from './assets/product-video.webm';
 import 'lenis/dist/lenis.css';
 
 function App() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('theme');
+      if (saved) return saved;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    return 'light';
+  });
 
   const toggleTheme = () => {
     setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
   };
 
   useEffect(() => {
+    localStorage.setItem('theme', theme);
     if (theme === 'light') {
       document.body.classList.add('light-mode');
       document.body.classList.remove('dark-mode');
@@ -77,16 +85,13 @@ function App() {
 
   return (
     <div className="app-container">
-      <DecorativeLayers />
       {/* Animation 3D en fond global */}
       <HairAnimation theme={theme} />
 
-      <CustomCursor />
       <Navbar theme={theme} toggleTheme={toggleTheme} />
 
       <main>
         <Hero />
-        <StorySection />
         <QuizSection />
       </main>
 

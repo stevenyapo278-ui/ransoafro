@@ -15,28 +15,30 @@ const Navbar = ({ theme, toggleTheme }) => {
   }, []);
 
   return (
-    <div className={`navbar-wrapper ${scrolled ? 'scrolled' : ''}`}>
-      <nav id="navbar">
-        <ul className="nav-left">
-          <li><a href="#diagnostic">Diagnostic</a></li>
-          <li><a href="#contact-session">Contact</a></li>
-        </ul>
+    <>
+      <div className={`navbar-wrapper ${scrolled ? 'scrolled' : ''}`}>
+        <nav id="navbar">
+          <ul className="nav-left">
+            <li><a href="#diagnostic">Diagnostic</a></li>
+          </ul>
 
-        <div className="nav-center">
-          <a className="nav-logo" href="#">
-            <img src={logo} alt="Rans'o Afro" className="logo-img" />
-          </a>
-        </div>
+          <div className="nav-center">
+            <a className="nav-logo" href="#">
+              <img src={logo} alt="Rans'o Afro" className="logo-img" />
+            </a>
+          </div>
 
-        <ul className="nav-right">
-          <li>
-            <button className="theme-toggle" onClick={toggleTheme} aria-label="Changer de thème">
-              {theme === 'dark' ? '☀️' : '🌙'}
-            </button>
-          </li>
-        </ul>
-      </nav>
-    </div>
+          <ul className="nav-right">
+            <li><a href="#contact-session">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <button className="theme-toggle-fab" onClick={toggleTheme} aria-label="Changer de thème">
+        <span className="fab-icon">{theme === 'dark' ? '☀️' : '🌙'}</span>
+        <span className="fab-text">{theme === 'dark' ? 'Light' : 'Dark'}</span>
+      </button>
+    </>
   );
 };
 

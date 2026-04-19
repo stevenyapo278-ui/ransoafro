@@ -12,31 +12,46 @@ const Hero = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Entrance animations
-      const tl = gsap.timeline();
-      
-      tl.fromTo('#hl', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power4.out' })
-        .fromTo('#ht', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1.2, ease: 'power4.out' }, '-=0.8')
-        .fromTo('#hs', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power4.out' }, '-=1')
-        .fromTo('.hero-actions', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 }, '-=0.5')
-        .fromTo('#si', { opacity: 0 }, { opacity: 1, duration: 1 }, '-=0.2');
+      // Stagger entrance animations — fadeUp depuis y:20
+      const stagger = 0.15;
+      const items = [
+        { el: '#hl', y: 20 },
+        { el: '#ht', y: 20 },
+        { el: '#hs', y: 20 },
+        { el: '.hero-cta-wrap', y: 20 },
+        { el: '.hero-badge', y: 20 },
+        { el: '#si', y: 0, opacity: true },
+      ];
+
+      items.forEach(({ el, y, opacity }, i) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: y || 0 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: opacity ? 1 : 0.9,
+            ease: 'power4.out',
+            delay: i * stagger,
+          }
+        );
+      });
 
       // Scroll-linked animations
       gsap.to(contentRef.current, {
         scrollTrigger: {
           trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
+          start: 'top top',
+          end: 'bottom top',
           scrub: true,
           pin: true,
-          pinSpacing: false
+          pinSpacing: false,
         },
         scale: 0.9,
         opacity: 0,
         y: -100,
-        ease: "none"
+        ease: 'none',
       });
-
     }, heroRef);
 
     return () => ctx.revert();
@@ -44,6 +59,9 @@ const Hero = () => {
 
   return (
     <section className="hero" ref={heroRef}>
+      {/* Overlay gradient semi-transparent sur le fond tressé */}
+      <div className="hero-overlay" aria-hidden="true" />
+
       <div className="hero-inner" ref={contentRef}>
         <div className="hero-content">
           <div className="hero-text-wrap">
@@ -55,13 +73,20 @@ const Hero = () => {
             <p className="hero-description" id="hs">
               Le premier diagnostic intelligent pour sublimer vos racines et vos boucles. Une expertise haute couture, enfin chez vous.
             </p>
-            
+
             <div className="hero-actions">
-              <a className="hero-cta" href="#diagnostic">
-                Commencer le diagnostic
-                <span className="cta-arrow">→</span>
+              {/* CTA principal — fond #3D1A0A, texte blanc, flèche animée */}
+              <a className="hero-cta hero-cta-wrap" href="#diagnostic" id="hero-cta-btn">
+                <span className="cta-text">Commencer le Diagnostic</span>
+                <span className="cta-arrow" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </span>
               </a>
-              <div className="hero-badge">
+
+              {/* Badge 100% Naturel */}
+              <div className="hero-badge" aria-label="100% Naturel">
                 <div className="hero-badge-inner">
                   <span className="hero-badge-num">100%</span>
                   <span className="hero-badge-sub">Naturel</span>
