@@ -25,7 +25,7 @@
   -webkit-backdrop-filter: var(--blur-lg);
   border: 1px solid var(--glass-border);
   border-radius: 100px;
-  padding: 18px 40px;
+  padding: 12px 40px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
   transition: all 0.4s var(--ease-out);
 }
@@ -82,7 +82,7 @@
 }
 
 .logo-img {
-  height: 62px; /* Slightly adjusted for better balance with links */
+  height: 100px; /* Significantly enlarged for impact */
   width: auto;
   object-fit: contain;
   filter: drop-shadow(0 2px 8px rgba(0,0,0,0.12));
@@ -90,7 +90,7 @@
 }
 
 .navbar-wrapper.scrolled .logo-img {
-  height: 40px;
+  height: 65px;
 }
 
 /* ── FLOATING ACTION BUTTON (FAB) ── */
@@ -175,7 +175,7 @@
   }
 
   .logo-img {
-    height: 42px;
+    height: 75px;
   }
 
   .theme-toggle-fab {

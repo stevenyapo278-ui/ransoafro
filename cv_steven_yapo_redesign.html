@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV — Steven Yapo</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      background: #0d1117;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      color: #e6edf3;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      background: #161b22;
+      border: 1px solid #30363d;
+      display: grid;
+      grid-template-columns: 72mm 1fr;
+      position: relative;
+    }
+
+    .page::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 72mm;
+      height: 100%;
+      background: #0d1117;
+      z-index: 0;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      position: relative;
+      z-index: 1;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      border-right: 1px solid #21262d;
+    }
+
+    .avatar-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .avatar-ring {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid #00d4aa;
+      padding: 3px;
+      background: transparent;
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #21262d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 600;
+      color: #00d4aa;
+      letter-spacing: 1px;
+    }
+
+    .name-block h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #f0f6fc;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+
+    .name-block .title-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 6px;
+      padding: 3px 10px;
+      background: rgba(0, 212, 170, 0.1);
+      border: 1px solid rgba(0, 212, 170, 0.3);
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 500;
+      color: #00d4aa;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .title-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #00d4aa;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.3;
+      }
+    }
+
+    /* SIDEBAR SECTIONS */
+    .s-section {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .s-label {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #484f58;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #21262d;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 11.5px;
+      color: #8b949e;
+      line-height: 1.4;
+    }
+
+    .contact-item .icon {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      color: #00d4aa;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .contact-item a,
+    .contact-item span {
+      color: #8b949e;
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    /* SKILL TAGS */
+    .skill-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .skill-category-name {
+      font-size: 10px;
+      font-weight: 600;
+      color: #484f58;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .tag {
+      padding: 2px 6px;
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      font-size: 9px;
+      font-weight: 500;
+      color: #8b949e;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .tag.accent {
+      background: rgba(0, 212, 170, 0.08);
+      border-color: rgba(0, 212, 170, 0.25);
+      color: #00d4aa;
+    }
+
+    /* TOOLS */
+    .tools-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .tool-badge {
+      padding: 2px 7px;
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      font-size: 9.5px;
+      font-weight: 500;
+      color: #c9d1d9;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* LANG */
+    .lang-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+    }
+
+    .lang-name {
+      color: #c9d1d9;
+      font-weight: 500;
+    }
+
+    .lang-level {
+      color: #484f58;
+      font-size: 10px;
+    }
+
+    .lang-bar {
+      width: 100%;
+      height: 2px;
+      background: #21262d;
+      border-radius: 2px;
+      margin-top: 4px;
+      overflow: hidden;
+    }
+
+    .lang-bar-fill {
+      height: 100%;
+      background: #00d4aa;
+      border-radius: 2px;
+    }
+
+    /* CERT */
+    .cert-item {
+      padding: 6px 8px;
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-left: 2px solid #00d4aa;
+      border-radius: 0 4px 4px 0;
+      font-size: 10.5px;
+      color: #8b949e;
+    }
+
+    .cert-item .cert-name {
+      font-weight: 600;
+      color: #c9d1d9;
+      font-size: 11px;
+      margin-bottom: 2px;
+    }
+
+    /* MAIN CONTENT */
+    .main {
+      position: relative;
+      z-index: 1;
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .m-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .m-label {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #00d4aa;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #21262d;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .m-label::before {
+      content: '';
+      display: inline-block;
+      width: 3px;
+      height: 12px;
+      background: #00d4aa;
+      border-radius: 2px;
+    }
+
+    /* SUMMARY */
+    .summary-text {
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: #8b949e;
+      padding: 0.75rem 1rem;
+      background: #0d1117;
+      border: 1px solid #21262d;
+      border-radius: 6px;
+      border-left: 3px solid #00d4aa;
+    }
+
+    .summary-text strong {
+      color: #c9d1d9;
+      font-weight: 500;
+    }
+
+    /* EXPERIENCE CARD */
+    .exp-card {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .exp-timeline {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      flex-shrink: 0;
+    }
+
+    .exp-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #00d4aa;
+      border: 2px solid #161b22;
+      box-shadow: 0 0 0 2px #00d4aa;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+
+    .exp-line {
+      width: 1px;
+      flex: 1;
+      background: #21262d;
+      margin: 4px 0;
+    }
+
+    .exp-body {
+      flex: 1;
+      padding-bottom: 1rem;
+    }
+
+    .exp-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 4px;
+    }
+
+    .exp-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #f0f6fc;
+    }
+
+    .exp-badge {
+      font-size: 9px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .badge-cdd {
+      background: rgba(0, 212, 170, 0.1);
+      border: 1px solid rgba(0, 212, 170, 0.3);
+      color: #00d4aa;
+    }
+
+    .badge-stage {
+      background: rgba(130, 80, 255, 0.1);
+      border: 1px solid rgba(130, 80, 255, 0.3);
+      color: #8250df;
+    }
+
+    .exp-company {
+      font-size: 11px;
+      color: #484f58;
+      margin-bottom: 8px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .exp-company span {
+      color: #8b949e;
+      font-weight: 500;
+    }
+
+    .exp-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .exp-list li {
+      font-size: 11.5px;
+      color: #8b949e;
+      line-height: 1.6;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .exp-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: #00d4aa;
+      font-size: 9px;
+      top: 2px;
+    }
+
+    /* EDUCATION */
+    .edu-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 12px;
+      background: #0d1117;
+      border: 1px solid #21262d;
+      border-radius: 6px;
+    }
+
+    .edu-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      color: #00d4aa;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+
+    .edu-body .edu-degree {
+      font-size: 12px;
+      font-weight: 600;
+      color: #c9d1d9;
+      line-height: 1.3;
+    }
+
+    .edu-body .edu-school {
+      font-size: 11px;
+      color: #484f58;
+      margin-top: 2px;
+    }
+
+    /* PRINT BUTTON */
+    .print-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background: linear-gradient(135deg, #00d4aa, #00b890);
+      color: #0d1117;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0, 212, 170, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      z-index: 1000;
+    }
+
+    .print-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0, 212, 170, 0.55);
+    }
+
+    .print-btn:active {
+      transform: translateY(0);
+    }
+
+    .print-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: #0d1117;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* PRINT */
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    @media print {
+
+      html,
+      body {
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+        padding: 0;
+        background: #0d1117 !important;
+      }
+
+      body {
+        display: block;
+      }
+
+      .print-btn {
+        display: none !important;
+      }
+
+      .page {
+        border: none;
+        width: 210mm;
+        height: 297mm;
+        min-height: unset;
+        box-shadow: none;
+        margin: 0;
+        overflow: hidden;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+
+      /* Force les couleurs d'arrière-plan */
+      .page::before {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .sidebar,
+      .summary-text,
+      .edu-card,
+      .cert-item,
+      .tag,
+      .tag.accent,
+      .tool-badge,
+      .exp-dot {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+
+    @media (max-width: 840px) {
+      body {
+        padding: 0;
+      }
+
+      .page {
+        width: 100%;
+        grid-template-columns: 1fr;
+      }
+
+      .page::before {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="avatar-wrap">
+        <div class="avatar-ring">
+          <div class="avatar-img">SY</div>
+        </div>
+        <div class="name-block">
+          <h1>Steven Yapo</h1>
+          <div class="title-tag">SOC Analyst</div>
+        </div>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="s-section">
+        <div class="s-label">Contact</div>
+
+        <div class="contact-item">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.42 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.34 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 5.72 5.72l1.73-1.73a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 14.9z" />
+          </svg>
+          <span>+225 07-58-51-90-80</span>
+        </div>
+
+        <div class="contact-item">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2-2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+          <a href="mailto:stevenyapo278@gmail.com">stevenyapo278@gmail.com</a>
+        </div>
+
+        <div class="contact-item">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          <span>Abidjan, Bingerville</span>
+        </div>
+
+        <div class="contact-item">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+            <rect x="2" y="9" width="4" height="12" />
+            <circle cx="4" cy="4" r="2" />
+          </svg>
+          <a href="https://ci.linkedin.com/in/steven-patrick-y-14570527a" target="_blank">linkedin.com/in/stevenyapo</a>
+        </div>
+
+        <div class="contact-item">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+          </svg>
+          <a href="https://github.com/stevenyapo278-ui" target="_blank">github.com/stevenyapo278</a>
+        </div>
+
+        <div class="contact-item">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <a href="https://mon-portfolio-steven-yapo.vercel.app/" target="_blank">mon-portfolio-yapo.app</a>
+        </div>
+      </div>
+
+      <!-- COMPÉTENCES -->
+      <div class="s-section">
+        <div class="s-label">Compétences</div>
+        <div class="skill-group">
+          <div class="skill-category-name">SIEM / SOC</div>
+          <div class="skill-tags">
+            <span class="tag accent">Wazuh</span>
+            <span class="tag accent">SIEM</span>
+            <span class="tag">Analyse alertes</span>
+            <span class="tag">Log analysis</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-category-name">Endpoint & EDR</div>
+          <div class="skill-tags">
+            <span class="tag accent">SentinelOne</span>
+            <span class="tag">Incident reports</span>
+            <span class="tag">Remediation</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-category-name">Automatisation</div>
+          <div class="skill-tags">
+            <span class="tag accent">n8n</span>
+            <span class="tag">RAG systems</span>
+            <span class="tag">Scripting</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-category-name">Administration</div>
+          <div class="skill-tags">
+            <span class="tag">Windows Server</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Docker</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TECH & OUTILS -->
+      <div class="s-section">
+        <div class="s-label">Tech & Outils</div>
+        <div class="tools-grid">
+          <span class="tool-badge">Bash</span>
+          <span class="tool-badge">Python</span>
+          <span class="tool-badge">PowerShell</span>
+          <span class="tool-badge">Wazuh</span>
+          <span class="tool-badge">SentinelOne</span>
+          <span class="tool-badge">n8n</span>
+          <span class="tool-badge">Docker</span>
+          <span class="tool-badge">Linux</span>
+          <span class="tool-badge">Zabbix</span>
+        </div>
+      </div>
+
+      <!-- CERTIFICATIONS -->
+      <div class="s-section">
+        <div class="s-label">Certifications</div>
+        <div class="cert-item">
+          <div class="cert-name" style="font-size:10px;">Artificial intelligence (Le Wagon)</div>
+          <div style="font-size:9px;color:#484f58;">Mai 2024 • ID: 8q0fo3j44h</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name" style="font-size:10px;">Docker (Le Wagon)</div>
+          <div style="font-size:9px;color:#484f58;">Mai 2024 • ID: xossou76nu</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name" style="font-size:10px;">Ethical Hacking (EC-Council)</div>
+          <div style="font-size:9px;color:#484f58;">Mai 2024 • ID: 325309</div>
+        </div>
+      </div>
+
+      <!-- LANGUES -->
+      <div class="s-section">
+        <div class="s-label">Langues</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div class="lang-item">
+            <div>
+              <div class="lang-name">Français</div>
+              <div class="lang-level">Langue maternelle</div>
+              <div class="lang-bar">
+                <div class="lang-bar-fill" style="width:100%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="lang-item">
+            <div style="width:100%">
+              <div class="lang-name">Anglais</div>
+              <div class="lang-level">Intermédiaire</div>
+              <div class="lang-bar">
+                <div class="lang-bar-fill" style="width:60%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- PROFIL -->
+      <section class="m-section">
+        <div class="m-label">Profil</div>
+        <div class="summary-text">
+          Analyste Cybersécurité orienté <strong>SOC</strong>, spécialisé en <strong>détection d'incidents</strong>,
+          analyse de vulnérabilités et durcissement des systèmes. Expérimenté sur le déploiement de SIEM (Wazuh), la
+          gestion d'EDR (SentinelOne) et l'automatisation des opérations de sécurité avec n8n. Passionné par
+          l'amélioration continue et l'intégration de l'IA dans les workflows SecOps.
+        </div>
+      </section>
+
+      <!-- EXPÉRIENCES -->
+      <section class="m-section">
+        <div class="m-label">Expériences</div>
+
+        <!-- EXP 1 -->
+        <div class="exp-card">
+          <div class="exp-timeline">
+            <div class="exp-dot"></div>
+            <div class="exp-line"></div>
+          </div>
+          <div class="exp-body">
+            <div class="exp-header">
+              <div class="exp-title">Assistant Cybersécurité</div>
+              <span class="exp-badge badge-cdd">CDD</span>
+            </div>
+            <div class="exp-company"><span>Groupe Prosuma</span> · Jan. 2024 — Avril 2026 · Abidjan</div>
+            <ul class="exp-list">
+              <li>Déploiement et configuration de la solution SIEM <strong style="color:#c9d1d9">Wazuh</strong> —
+                surveillance et corrélation des événements de sécurité en temps réel.</li>
+              <li>Mise en place de workflows d'automatisation <strong style="color:#c9d1d9">n8n</strong> pour la
+                génération et l'envoi automatique de rapports de sécurité.</li>
+              <li>Surveillance des alertes Wazuh et contribution à l'amélioration continue des règles de détection
+                (tuning des règles).</li>
+              <li>Analyse des journaux systèmes et réseau pour l'identification d'anomalies et risques potentiels.</li>
+              <li>Collaboration avec l'équipe IT pour le renforcement des politiques de sécurité et le suivi des
+                incidents.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- EXP 2 -->
+        <div class="exp-card">
+          <div class="exp-timeline">
+            <div class="exp-dot"></div>
+          </div>
+          <div class="exp-body">
+            <div class="exp-header">
+              <div class="exp-title">Assistant Stagiaire Cybersécurité</div>
+              <span class="exp-badge badge-stage">Stage</span>
+            </div>
+            <div class="exp-company"><span>Groupe Prosuma</span> · Juin 2023 — Déc. 2023 · Abidjan</div>
+            <ul class="exp-list">
+              <li>Réalisation de l'inventaire complet du parc informatique (postes, serveurs, équipements réseau) et
+                mise à jour de la base documentaire.</li>
+              <li>Diagnostic et résolution des incidents liés à l'agent <strong
+                  style="color:#c9d1d9">SentinelOne</strong> (installation, mise à jour, troubleshooting).</li>
+              <li>Analyse et rédaction de rapports d'incidents EDR — alertes, comportements suspects, remédiation.</li>
+              <li>Contribution aux campagnes de sensibilisation à la cybersécurité (supports de communication, suivi des
+                retours).</li>
+              <li>Support IT niveau 1 et mise en œuvre des bonnes pratiques de sécurité.</li>
+            </ul>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- FORMATION -->
+      <section class="m-section">
+        <div class="m-label">Formation</div>
+
+        <div class="edu-card">
+          <div class="edu-year">2023</div>
+          <div class="edu-body">
+            <div class="edu-degree">Licence — Administration & Sécurité des Systèmes et Réseaux Informatiques (ASSRI)
+            </div>
+            <div class="edu-school">Université Polytechnique de Bingerville · Côte d'Ivoire</div>
+          </div>
+        </div>
+
+        <div class="edu-card">
+          <div class="edu-year">2020</div>
+          <div class="edu-body">
+            <div class="edu-degree">Baccalauréat Série C</div>
+            <div class="edu-school">Lycée Moderne Akoupé · Côte d'Ivoire</div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <button class="print-btn" onclick="window.print()" title="Imprimer le CV en A4">
+    <svg viewBox="0 0 24 24">
+      <polyline points="6 9 6 2 18 2 18 9" />
+      <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+      <rect x="6" y="14" width="12" height="8" />
+    </svg>
+    Imprimer le CV
+  </button>
+
+</body>
+
+</html>
