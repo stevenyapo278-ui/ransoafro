@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Hero.css';
+import logo from '../../assets/logo.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,6 +16,7 @@ const Hero = () => {
       // Stagger entrance animations — fadeUp depuis y:20
       const stagger = 0.15;
       const items = [
+        { el: '.hero-logo-wrap', y: 20 },
         { el: '#hl', y: 20 },
         { el: '#ht', y: 20 },
         { el: '#hs', y: 20 },
@@ -64,6 +66,9 @@ const Hero = () => {
 
       <div className="hero-inner" ref={contentRef}>
         <div className="hero-content">
+          <div className="hero-logo-wrap">
+            <img src={logo} alt="Rans'O Afro" className="hero-logo" />
+          </div>
           <div className="hero-text-wrap">
             <span className="hero-label" id="hl">Soin Capillaire Éditorial</span>
             <h1 className="hero-title" id="ht" ref={titleRef}>
