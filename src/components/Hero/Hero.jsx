@@ -16,12 +16,13 @@ const Hero = () => {
       // Stagger entrance animations — fadeUp depuis y:20
       const stagger = 0.15;
       const items = [
-        { el: '.hero-logo-wrap', y: 20 },
         { el: '#hl', y: 20 },
         { el: '#ht', y: 20 },
         { el: '#hs', y: 20 },
+        { el: '.hero-logo-wrap.mobile-only', y: 20 },
         { el: '.hero-cta-wrap', y: 20 },
         { el: '.hero-badge', y: 20 },
+        { el: '.hero-logo-wrap.desktop-only', y: 20 },
         { el: '#si', y: 0, opacity: true },
       ];
 
@@ -66,9 +67,6 @@ const Hero = () => {
 
       <div className="hero-inner" ref={contentRef}>
         <div className="hero-content">
-          <div className="hero-logo-wrap">
-            <img src={logo} alt="Rans'O Afro" className="hero-logo" />
-          </div>
           <div className="hero-text-wrap">
             <span className="hero-label" id="hl">Soin Capillaire Éditorial</span>
             <h1 className="hero-title" id="ht" ref={titleRef}>
@@ -78,6 +76,11 @@ const Hero = () => {
             <p className="hero-description" id="hs">
               Le premier diagnostic intelligent pour sublimer vos racines et vos boucles. Une expertise haute couture, enfin chez vous.
             </p>
+
+            {/* Logo Mobile — En dessous des premiers textes */}
+            <div className="hero-logo-wrap mobile-only">
+              <img src={logo} alt="Rans'O Afro" className="hero-logo" />
+            </div>
 
             <div className="hero-actions">
               {/* CTA principal — fond #3D1A0A, texte blanc, flèche animée */}
@@ -99,6 +102,11 @@ const Hero = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Logo Desktop — À droite */}
+        <div className="hero-logo-wrap desktop-only">
+          <img src={logo} alt="Rans'O Afro" className="hero-logo" />
         </div>
       </div>
 

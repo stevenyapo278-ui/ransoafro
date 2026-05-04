@@ -49,7 +49,7 @@ body.dark-mode .hero-overlay {
   z-index: 1;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between; /* To push logo to the right on PC */
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
@@ -64,13 +64,22 @@ body.dark-mode .hero-overlay {
 }
   
 .hero-logo-wrap {
-  display: none; /* Hidden on desktop by default */
-  margin-bottom: 32px;
+  display: flex; 
   opacity: 0; /* Animated by GSAP */
 }
 
+.hero-logo-wrap.mobile-only {
+  display: none; /* Hidden on desktop */
+}
+
+.hero-logo-wrap.desktop-only {
+  display: flex;
+  margin-top: 0;
+  align-self: center; /* Center vertically relative to hero-content */
+}
+
 .hero-logo {
-  height: 80px;
+  height: 100px;
   width: auto;
   object-fit: contain;
   filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08));
@@ -337,10 +346,16 @@ body.dark-mode .scroll-text {
     text-align: center;
   }
 
-  .hero-logo-wrap {
+  .hero-logo-wrap.desktop-only {
+    display: none;
+  }
+
+  .hero-logo-wrap.mobile-only {
     display: flex;
     justify-content: center;
     width: 100%;
+    margin-top: 24px;
+    margin-bottom: 24px;
   }
 
   .hero-logo {
